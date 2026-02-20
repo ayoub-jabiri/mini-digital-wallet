@@ -165,17 +165,31 @@ const controllers = {
             );
 
             if (portfolioIndex >= 0) {
-                // Update the portfolio name
-                portfolios[portfolioIndex].sold = portfolio.sold;
+                const currentSold = portfolios[portfolioIndex].sold;
 
-                // Send a success message
-                res.writeHead(200, { "content-type": "application/json" });
-                res.end(
-                    JSON.stringify({
-                        message:
-                            "The portfolio sold has been deposited successfully!",
-                    })
-                );
+                // Check if the sold after the withdraw can be positif
+                if (currentSold - portfolio.sold >= 0) {
+                    // Update the portfolio name
+                    portfolios[portfolioIndex].sold -= portfolio.sold;
+
+                    // Send a success message
+                    res.writeHead(200, { "content-type": "application/json" });
+                    res.end(
+                        JSON.stringify({
+                            message:
+                                "The portfolio sold has been withdrawn successfully!",
+                        })
+                    );
+                } else {
+                    // Send an error message
+                    res.writeHead(404, { "content-type": "application/json" });
+                    res.end(
+                        JSON.stringify({
+                            message:
+                                "The operation can't be completed due to that the sold must stay always >= 0",
+                        })
+                    );
+                }
             } else {
                 // Send an error message
                 res.writeHead(404, { "content-type": "application/json" });
