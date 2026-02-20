@@ -22,7 +22,7 @@ const controllers = {
                 users.push(user);
 
                 // Send a success message
-                res.writeHead(200, { "content-type": "application/json" });
+                res.writeHead(201, { "content-type": "application/json" });
                 res.end(
                     JSON.stringify({
                         message: "The user has been added successfully!",

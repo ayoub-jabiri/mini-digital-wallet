@@ -25,7 +25,7 @@ const controllers = {
                     portfolios.push(portfolio);
 
                     // Send a success message
-                    res.writeHead(200, { "content-type": "application/json" });
+                    res.writeHead(201, { "content-type": "application/json" });
                     res.end(
                         JSON.stringify({
                             message:
