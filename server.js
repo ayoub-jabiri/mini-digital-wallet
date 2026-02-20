@@ -7,7 +7,11 @@ const server = http.createServer((req, res) => {
     const { url } = req;
     if (url == "/users") {
         handleUsetsRoutes(req, res);
-    } else if (url == "/portfolios") {
+    } else if (
+        url == "/portfolios" ||
+        url == "/portfolios/deposit" ||
+        url == "/portfolios/withdraw"
+    ) {
         handlePortfoliosRoutes(req, res);
     } else {
         // Send an error message

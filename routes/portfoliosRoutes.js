@@ -3,6 +3,8 @@ const {
     addPortfolio,
     updatePortfolio,
     deletePortfolio,
+    deposit,
+    withdraw,
 } = require("../controllers/portfoliosController");
 
 const handlePortfoliosRoutes = (req, res) => {
@@ -16,6 +18,10 @@ const handlePortfoliosRoutes = (req, res) => {
         updatePortfolio(req, res);
     } else if (url == "/portfolios" && method == "DELETE") {
         deletePortfolio(req, res);
+    } else if (url == "/portfolios/deposit" && method == "PUT") {
+        deposit(req, res);
+    } else if (url == "/portfolios/withdraw" && method == "PUT") {
+        withdraw(req, res);
     }
 };
 

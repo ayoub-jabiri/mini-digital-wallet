@@ -1,4 +1,11 @@
-const portfolios = [];
+const portfolios = [
+    {
+        id: 1,
+        user_id: 1,
+        name: "portfolio",
+        sold: 0,
+    },
+];
 
 const { users } = require("./usersController");
 
@@ -103,6 +110,70 @@ const controllers = {
                 res.end(
                     JSON.stringify({
                         message: "The portfolio has been deleted successfully!",
+                    })
+                );
+            } else {
+                // Send an error message
+                res.writeHead(404, { "content-type": "application/json" });
+                res.end(
+                    JSON.stringify({
+                        message: "The portfolio is not registered yet!",
+                    })
+                );
+            }
+        });
+    },
+    deposit(req, res) {
+        req.on("data", (data) => {
+            const portfolio = JSON.parse(data.toString());
+
+            // Check if the portfolio id is already taken
+            let portfolioIndex = portfolios.findIndex(
+                (po) => po.id == portfolio.id
+            );
+
+            if (portfolioIndex >= 0) {
+                // Update the portfolio name
+                portfolios[portfolioIndex].sold = portfolio.sold;
+
+                // Send a success message
+                res.writeHead(200, { "content-type": "application/json" });
+                res.end(
+                    JSON.stringify({
+                        message:
+                            "The portfolio sold has been deposited successfully!",
+                    })
+                );
+            } else {
+                // Send an error message
+                res.writeHead(404, { "content-type": "application/json" });
+                res.end(
+                    JSON.stringify({
+                        message: "The portfolio is not registered yet!",
+                    })
+                );
+            }
+        });
+    },
+    withdraw(req, res) {
+        req.on("data", (data) => {
+            const portfolio = JSON.parse(data.toString());
+
+            // Check if the portfolio id is already taken
+            let portfolioIndex = portfolios.findIndex(
+                (po) => po.id == portfolio.id
+            );
+
+            if (portfolioIndex >= 0) {
+                // Update the portfolio name
+                portfolios[portfolioIndex].sold = portfolio.sold;
+
+                // Send a success message
+                res.writeHead(200, { "content-type": "application/json" });
+                res.end(
+                    JSON.stringify({
+                        message:
+                            "The portfolio sold has been deposited successfully!",
                     })
                 );
             } else {
