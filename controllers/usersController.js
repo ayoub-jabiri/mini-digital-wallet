@@ -1,4 +1,9 @@
-const users = [];
+const users = [
+    {
+        id: 1,
+        name: "Ahmed",
+    },
+];
 
 const controllers = {
     getUsers(req, res) {
@@ -24,7 +29,7 @@ const controllers = {
                     })
                 );
             } else {
-                // Send a success message
+                // Send a an error message
                 res.writeHead(404, { "content-type": "application/json" });
                 res.end(
                     JSON.stringify({
@@ -53,7 +58,7 @@ const controllers = {
                     })
                 );
             } else {
-                // Send a success message
+                // Send an error message
                 res.writeHead(404, { "content-type": "application/json" });
                 res.end(
                     JSON.stringify({
@@ -82,7 +87,7 @@ const controllers = {
                     })
                 );
             } else {
-                // Send a success message
+                // Send an error message
                 res.writeHead(404, { "content-type": "application/json" });
                 res.end(
                     JSON.stringify({
@@ -94,4 +99,4 @@ const controllers = {
     },
 };
 
-module.exports = controllers;
+module.exports = { controllers, users };

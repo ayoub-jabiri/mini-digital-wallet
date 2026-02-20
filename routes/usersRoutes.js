@@ -1,11 +1,8 @@
 const {
-    getUsers,
-    addUser,
-    updateUser,
-    deleteUser,
+    controllers: { getUsers, addUser, updateUser, deleteUser },
 } = require("../controllers/usersController");
 
-const handleRoutes = (req, res) => {
+const handleUsetsRoutes = (req, res) => {
     const { url, method } = req;
 
     if (url == "/users" && method == "GET") {
@@ -19,4 +16,4 @@ const handleRoutes = (req, res) => {
     }
 };
 
-module.exports = { handleRoutes };
+module.exports = { handleUsetsRoutes };
