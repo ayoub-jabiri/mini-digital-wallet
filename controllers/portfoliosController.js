@@ -127,7 +127,7 @@ const controllers = {
 
             if (portfolioIndex >= 0) {
                 // Update the portfolio name
-                portfolios[portfolioIndex].sold = portfolio.sold;
+                portfolios[portfolioIndex].sold += portfolio.sold;
 
                 // Send a success message
                 res.writeHead(200, { "content-type": "application/json" });
