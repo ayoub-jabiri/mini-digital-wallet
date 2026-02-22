@@ -1,9 +1,4 @@
-const users = [
-    {
-        id: 1,
-        name: "Ahmed",
-    },
-];
+const users = [];
 
 const controllers = {
     getUsers(req, res) {

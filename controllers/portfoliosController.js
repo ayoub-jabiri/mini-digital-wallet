@@ -1,11 +1,4 @@
-const portfolios = [
-    {
-        id: 1,
-        user_id: 1,
-        name: "portfolio",
-        sold: 0,
-    },
-];
+const portfolios = [];
 
 const { users } = require("./usersController");
 
