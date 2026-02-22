@@ -1,0 +1,20 @@
+[
+    {
+        "portfolioId": 1,
+        "operationDate": "2/22/2026, 9:12:48 PM",
+        "operationType": "Deposit",
+        "operationAmount": 11
+    },
+    {
+        "portfolioId": 1,
+        "operationDate": "2/22/2026, 9:13:10 PM",
+        "operationType": "Deposit",
+        "operationAmount": 30
+    },
+    {
+        "portfolioId": 1,
+        "operationDate": "2/22/2026, 9:14:08 PM",
+        "operationType": "Deposit",
+        "operationAmount": 30
+    }
+]

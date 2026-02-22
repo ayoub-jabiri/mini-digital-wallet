@@ -1,6 +1,8 @@
-const portfolios = [];
-
+const fs = require("fs");
 const { users } = require("./usersController");
+
+const portfolios = [],
+    history = [];
 
 const controllers = {
     getPortfolios(req, res) {
@@ -129,6 +131,21 @@ const controllers = {
                 // Update the portfolio name
                 portfolios[portfolioIndex].sold += portfolio.sold;
 
+                // Register the operation in the history
+                history.push({
+                    portfolioId: portfolios[portfolioIndex].id,
+                    operationDate: new Date().toLocaleString(),
+                    operationType: "Deposit",
+                    operationAmount: portfolio.sold,
+                });
+                fs.writeFile(
+                    "./history.json",
+                    JSON.stringify(history),
+                    (error) => {
+                        if (error) throw error;
+                    }
+                );
+
                 // Send a success message
                 res.writeHead(200, { "content-type": "application/json" });
                 res.end(
@@ -164,6 +181,21 @@ const controllers = {
                 if (currentSold - portfolio.sold >= 0) {
                     // Update the portfolio name
                     portfolios[portfolioIndex].sold -= portfolio.sold;
+
+                    // Register the operation in the history
+                    history.push({
+                        portfolioId: portfolios[portfolioIndex].id,
+                        operationDate: new Date().toLocaleString(),
+                        operationType: "Withdraw",
+                        operationAmount: portfolio.sold,
+                    });
+                    fs.writeFile(
+                        "./history.json",
+                        JSON.stringify(history),
+                        (error) => {
+                            if (error) throw error;
+                        }
+                    );
 
                     // Send a success message
                     res.writeHead(200, { "content-type": "application/json" });
